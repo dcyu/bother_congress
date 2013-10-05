@@ -14,6 +14,11 @@ BotherCongress::Application.routes.draw do
 
   root :to => 'home#index'
 
+  match 'congress' => 'home#congress'
+
+  match 'send_message' => 'home#send_message'
+  match 'save_message' => 'home#save_message'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -21,4 +21,18 @@ class User < ActiveRecord::Base
       Authorization.create :user => self, :provider => auth_hash["provider"], :uid => auth_hash["uid"]
     end
   end
+
+  def has_facebook
+    return !Authorization.find_by_provider_and_user_id('facebook', id).nil?
+  end
+
+  def has_twitter
+    return !Authorization.find_by_provider_and_user_id('twitter', id).nil?
+  end
+
+  def has_email
+    return (!email.nil?) && (!email.empty?)
+  end
+
+
 end
