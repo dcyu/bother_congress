@@ -4,14 +4,14 @@
     %title BotherCongress
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
     %header.l-header.clearfix
       %h1
         %a{:href => "#{root_path}"}  
-          %span.t-red> bother 
-          %span.t-blue> your
-          %span> congressman 
+          %span.t-blue> bother 
+          %span.t-red> congress
 
       %nav.l-nav 
         %ul 
@@ -27,5 +27,6 @@
           %li 
             %a{:href => "#"} 
               sign in
-
-    = yield
+    .l-container
+    
+      = yield
