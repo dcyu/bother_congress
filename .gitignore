@@ -13,9 +13,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 
 
 # Ignore VIM stuff
 *.swp
 *.swo
 *.swn
+.ruby-version
+.ruby-gemset
