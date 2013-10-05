@@ -25,4 +25,9 @@ class Congressman < ActiveRecord::Base
   attr_accessible :title, :firstname, :middlename, :lastname, :name_suffix, :party, :state, :district, :in_office, :gender, :phone, :fax, :senate_class, :birthdate
 
   has_one :web_identity
+  delegate :bioguide_id, :to => :web_identity
+
+  def picture_url
+    "/assets/congressmen_photos/#{bioguide_id}.jpg"
+  end
 end
