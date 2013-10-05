@@ -1,0 +1,61 @@
+html
+  width: 100%
+  height: 100%
+
+a
+  text-decoration: none
+
+b
+  line-height: 1.5em
+
+body 
+  font-size: 100%
+  min-height: 100%
+  position: relative
+
+.clear
+  clear: both
+
+.clearfix:after
+  visibility: hidden
+  display: block
+  content: ""
+  clear: both
+  height: 0
+  
+h1, h2, h3, h4, h5, h6
+  line-height: 1.3em
+
+h1
+  font-size: 3em
+
+h2
+  font-size: 2em
+  margin: 0
+  padding: 2em
+  text-align: center
+
+img
+  border: 0px
+
+input
+  display: block
+  margin: 1em 0
+  +border-radius(5px)
+  padding: 0.2em
+  &[type=checkbox]
+    display: inline-block
+
+li
+  font-size: 1em
+  font-weight: bold
+  
+p
+  font-size: 1em
+  line-height: 1.3em
+  margin: 0
+  padding: 0 0 1em 0
+
+ul
+  list-style-type: none
+
