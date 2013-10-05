@@ -44,3 +44,8 @@ gem 'thin'
 
 # To use debugger
 # gem 'debugger'
+
+
+# Gem OmniAuth
+gem 'omniauth'
+gem 'omniauth-facebook'
