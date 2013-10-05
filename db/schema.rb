@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20131005185920) do
 
+  create_table "authorizations", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "congressmen", :force => true do |t|
     t.string   "title"
     t.string   "firstname"
@@ -30,6 +38,13 @@ ActiveRecord::Schema.define(:version => 20131005185920) do
     t.datetime "birthdate"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "web_identities", :force => true do |t|
