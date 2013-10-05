@@ -1,6 +1,8 @@
 BotherCongress::Application.routes.draw do
   get "sessions/new"
 
+  get "/congressmen", :to => "congressmen#index", :as => :congressmen
+
   get "sessions/create"
 
   get "sessions/failure"
@@ -11,8 +13,6 @@ BotherCongress::Application.routes.draw do
   get '/logout', :to => 'sessions#destroy'
 
   root :to => 'home#index'
-
-  match 'congress' => 'home#congress'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,36 @@
+%h1.title.is-ta-center.t-arvo All Congressmen
+
+.filter.is-ta-center
+  %span Filter by:
+  %select{placeholder: "State"}
+    %option{:disabled => "", :selected => "", :value => ""} State
+    %option{:value => "volvo"} Volvo
+    %option{:value => "saab"} Saab
+    %option{:value => "mercedes"} Mercedes
+    %option{:value => "audi"} Audi
+
+  %select{placeholder: "State"}
+    %option{:disabled => "", :selected => "", :value => ""} Political Party
+    %option{:value => "volvo"} Volvo
+    %option{:value => "saab"} Saab
+    %option{:value => "mercedes"} Mercedes
+    %option{:value => "audi"} Audi
+
+  %input{:type => "text", placeholder: "Name"}/ 
+
+.congressmen
+
+  - @congressmen.each do |c|
+    - if c.in_office == 1 
+      .congressman
+        = image_tag c.picture_url
+        %strong 
+          = c.title + "."
+          = c.firstname
+          = c.lastname
+        %label 
+          %b 
+            = c.party 
+            \- #{c.state}
+        %a.overlay{:href => "#"}
+          %h4.t-arvo.t-white Contact

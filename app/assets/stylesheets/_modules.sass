@@ -4,11 +4,15 @@
   text-align: center
 
 .congressman
+  position: relative
   display: inline-block
   margin: 0 4em 4em 0
+  width: 200px
   img, strong, label
     text-align: center
     display: block
+  img
+    position: relative
   strong
     line-height: 1.5em
 
@@ -16,6 +20,27 @@
   font-weight: bold
   border-bottom: 2px solid #000
   margin-bottom: 4em
+  span, select, input
+    margin-right: 10px
+
+.overlay
+  background-color: rgba(0,0,0,0.8)
+  width: 200px
+  height: 250px
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 5
+  opacity: 0
+  &:hover
+    opacity: 1
+  h4
+    font-size: 50px
+    line-height: 250px
+    margin: 0
+    padding: 0
+
+
 
 .title
   margin: 0 0 0.5em 0
