@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005185920) do
+ActiveRecord::Schema.define(:version => 20131005200528) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20131005185920) do
     t.string   "official_rss"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "congressman_id"
   end
 
 end
