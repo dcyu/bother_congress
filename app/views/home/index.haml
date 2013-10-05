@@ -1,11 +1,22 @@
-%h2.t-arvo 
-  %span.t-blue Hey. 
-  You're a decent person, and you recognize that many of the people in
-  %span.t-red Congress 
-  aren't necessarily acting with the best interests of the country in mind. So why not tell them how you feel?
+%h1.t-arvo 
+  Bother a Congressman:
 
-%h2.t-arvo Just one click connects you through phone, email, facebook, and twitter.
+%input.message.t-arvo{:type => "text", placeholder: "Get your act together."}/ 
 
 %h2.t-arvo
-  = link_to "Click here to get started →", login_path
+  = link_to "Next →", login_path, class: "is-ta-right is-block"
      
+.previous-messages
+
+  %h2.t-arvo
+    Or use someone else's message:
+
+  %p.previous-message I can't believe how ridiculous you are.
+
+  %p.previous-message Really, you guys are absolute morons.
+
+  %p.previous-message Buy me a sandwich.
+  
+
+:javascript
+  $(".message").focus();

@@ -1,4 +1,11 @@
-%h1.title.is-ta-center.t-arvo All Congressmen
+.message
+  %h1.title.is-ta-center.t-arvo Your Message
+
+  %textarea.message-area.is-block
+  
+  %input.is-block.is-ta-center{:type => "submit", :value => "Submit"}/
+
+%h1.title.is-ta-center.t-arvo Congressmen Search
 
 .filter.is-ta-center
   %span Filter by:
@@ -35,3 +42,9 @@
             \- #{c.state}
         %a.overlay{:href => "#"}
           %h4.t-arvo.t-white Contact
+
+:javascript
+  $(".overlay").on("click", function(e) {
+    e.preventDefault;
+
+  });
