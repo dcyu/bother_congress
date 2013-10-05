@@ -22,6 +22,7 @@ end
 
 group :development do
   gem 'haml-rails'
+  gem 'annotate', ">=2.5.0"
 end
 
 group :test do
