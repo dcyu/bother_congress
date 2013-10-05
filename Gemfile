@@ -49,3 +49,4 @@ gem 'thin'
 # Gem OmniAuth
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
