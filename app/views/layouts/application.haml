@@ -6,10 +6,26 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %header.l-header
+    %header.l-header.clearfix
       %h1
         %a{:href => "#{root_path}"}  
           %span.t-red> bother 
           %span.t-blue> your
           %span> congressman 
+
+      %nav.l-nav 
+        %ul 
+          %li 
+            %a{:href => "#"} 
+              about
+          %li 
+            %a{:href => "#"} 
+              contact
+          %li 
+            %a{:href => "#"} 
+              sign up
+          %li 
+            %a{:href => "#"} 
+              sign in
+
     = yield
