@@ -45,7 +45,7 @@
           %select#state-select{name:'state', :style=>"width:180px;", :"data-placeholder" => "State"}
             %option
             = options_for_select(country_select_options)
-          %select#legislator-type-select{name:'type', :style=>"width:180px;", :"data-placeholder" => "Legislator Type"}
+          %select#legislator-type-select{name:'title', :style=>"width:180px;", :"data-placeholder" => "Legislator Type"}
             %option
             %option{value: 'Sen'}
               Senator
@@ -87,14 +87,14 @@
 
     %h2.t-arvo.is-inline-block.is-left
       Send it through:
-    
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "facebook_button"} 
+
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "facebook_button"}
       FACEBOOK
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "twitter_button"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "twitter_button"}
       TWITTER
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "phone_button"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "phone_button"}
       PHONE
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "email_button"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "email_button"}
       EMAIL
 
     %h2.t-arvo.is-ta-left
@@ -108,4 +108,4 @@
 
 :javascript
   INIT_STATE = #{JSON::dump(@init_state)};
-  
+

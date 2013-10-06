@@ -76,3 +76,4 @@ $ ->
   $("body").delegate ".close-link", "click", remove_recipient
   $("body").delegate "#show-search-filters-link", "click", show_search_filters
   $("body").delegate "#hide-search-filters-link", "click", hide_search_filters
+  $("body").delegate "#state-select, #legislator-type-select, #political-party-select", "change", refresh_congressmen_view

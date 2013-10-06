@@ -5,6 +5,9 @@ class CongressmenController < ApplicationController
 
   def search
     results = Congressman.where("in_office = 1 AND firstname || ' ' || lastname ~* ?", "[[:<:]]"+params[:q].strip)
+    results = results.where(state: params[:state]) unless params[:state].blank?
+    results = results.where(party: params[:party]) unless params[:party].blank?
+    results = results.where(title: params[:title]) unless params[:title].blank?
 
     if request.xhr?
       if session[:last_xhr] && session[:last_xhr] == results[0..3].map(&:id).join("")
