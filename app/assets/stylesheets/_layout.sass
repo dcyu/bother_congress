@@ -42,6 +42,9 @@
   width: 100%
   top: 0
   position: absolute
+  display: none
+  &.first
+    display: inline-block
   &.second
     top: 0
     right: -150%
@@ -50,14 +53,15 @@
     right: -300%
 
 .l-window
-  position: relative
+  position: absolute
+  top: 0
+  // left: 0
   width: 100%
   height: auto
 
 .l-wrapper
   width: 70%
-  height: 100%
+  // height: 1000%
   margin: 0 auto
   position: relative
-  overflow-x: hidden
-  overflow-y: visible 
+  overflow: hidden 

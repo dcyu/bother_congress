@@ -14,3 +14,32 @@
 //= require jquery_ujs
 //= require typeahead-min
 //= require_tree .
+
+$(document).ready(function() {
+  
+  $(".message").focus();
+
+  $(".old-message").on("click", function() {
+    var message = $(this).html();
+    $(".message").val(message);
+  });
+
+  $(".next-link").on("click", function(e) {
+    e.preventDefault();
+    $(".l-container").show();
+    $(this).closest(".l-window").animate({right: "+=150%"});
+    var height = $(this).closest(".l-container").next().height();
+    $(".l-wrapper").css("height", height + 10);
+  });
+
+  $(".previous-link").on("click", function(e) {
+    e.preventDefault();
+    $(this).closest(".l-window").animate({right: "+=-150%"});
+    var height = $(this).closest(".l-container").prev().height();
+    $(".l-wrapper").css("height", height + 10);
+  });
+
+  var height = $(".l-container:nth-child(1)").height();
+  $(".l-wrapper").css("height", height + 10);
+
+});
