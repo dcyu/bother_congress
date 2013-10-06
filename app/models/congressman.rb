@@ -27,6 +27,7 @@ class Congressman < ActiveRecord::Base
 
   has_one :web_identity
   delegate :bioguide_id, :to => :web_identity
+  delegate :facebook_id, :to => :web_identity
 
   def picture_url
     "/assets/congressmen_photos/#{bioguide_id}.jpg"

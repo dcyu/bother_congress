@@ -12,8 +12,9 @@ class HomeController < ApplicationController
       message = request.POST['message']
 
       if user
+        cm = []
         if user.has_facebook
-          send_facebook(message, user, nil)
+          send_facebook(message, user, cm)
         end
       else
       end
