@@ -31,16 +31,19 @@
 
     %h1.t-arvo{:style=>"display:inline-block;"}
       Select Legislator(s)
-    %p#selected{:style =>"margin-left:50px; display:inline-block"}
-
+    #selected{:style =>"margin-left:50px; display:inline-block;"}
+      - Congressman.find_all_by_id(session[:congressmen]).each do |c|
+        .selected-name
+          = c.fullname
+          .close-link{:"data-id" => c.id}
+            &times;
     .filter.is-ta-center
       %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
         %input.search.t-arvo{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q"}/
 
     .congressmen
-
       - @congressmen.each do |c|
-        .congressman
+        .congressman{:id => "congressman-#{c.id}"}
           = image_tag c.picture_url
           %strong
             = c.title + "."
@@ -50,9 +53,12 @@
             %b
               = c.party
               \- #{c.state}
-          %a.overlay.unselected{:href => "#", :"data-id" => c.id}
-            %h4.t-arvo.t-white Select
-
+          %a{:class => "overlay #{if session[:congressmen].include?(c.id) then 'selected' else 'unselected' end}", :href => "#", :"data-id" => c.id}
+            %h4.t-arvo.t-white
+              - if session[:congressmen].include?(c.id)
+                &#10003;
+              - else
+                Select
     = will_paginate @congressmen, :class => 'apple_pagination'
 
 

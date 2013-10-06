@@ -10,7 +10,7 @@ refresh_congressmen_view = ->
           {{party}} - {{state}}
         </b>
       <a class="overlay {{#if selected}}selected{{else}}unselected{{/if}}" href="#" data-id="{{id}}">
-        <h4 class="t-arvo t-white">{{#if selected}}&#10003;{{else}}Contact{{/if}}</h4>
+        <h4 class="t-arvo t-white">{{#if selected}}&#10003;{{else}}Select{{/if}}</h4>
       </a>
     </div>
   """)
@@ -33,7 +33,7 @@ add_recipient = (e) ->
     data: {id: $(this).data('id')},
     success: (data) =>
       $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
-      $("#selected").html(("<span>#{congressman.fullname}</span>" for congressman in data).join(""))
+      $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{$(this).data('id')}'>&times;</div></span>" for congressman in data).join(""))
 
 remove_recipient = (e) ->
   $.ajax
@@ -41,8 +41,8 @@ remove_recipient = (e) ->
     url: '/congressmen/remove_recipient',
     data: {id: $(this).data('id')},
     success: (data) =>
-      $(this).removeClass('selected').addClass('unselected').find('h4').html("Select")
-      $("#selected").html(("<span>#{congressman.fullname}</span>" for congressman in data).join(""))
+      $("#congressman-#{$(this).data('id')} a").removeClass('selected').addClass('unselected').find('h4').html("Select")
+      $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{$(this).data('id')}'>&times;</div></span>" for congressman in data).join(""))
 
 $ ->
   timer = null
@@ -54,3 +54,4 @@ $ ->
 
   $("body").delegate ".overlay.unselected", "click", add_recipient
   $("body").delegate ".overlay.selected", "click", remove_recipient
+  $("body").delegate ".close-link", "click", remove_recipient
