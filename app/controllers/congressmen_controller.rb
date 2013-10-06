@@ -7,6 +7,11 @@ class CongressmenController < ApplicationController
     results = Congressman.where("in_office = 1 AND firstname || ' ' || lastname ~* ?", "[[:<:]]"+params[:q].strip)
 
     if request.xhr?
+      if session[:last_xhr] && session[:last_xhr] == results[0..3].map(&:id).join("")
+        return render :json => {status: 'nochange'}.to_json
+      end
+      session[:last_xhr] = results[0..3].map(&:id).join("")
+
       congressmen = results[0..3].map do |c|
         {
           id: c.id,
@@ -19,7 +24,7 @@ class CongressmenController < ApplicationController
           selected: !!session[:congressmen].try(:include?, c.id)
         }
       end
-      render :json => congressmen.to_json
+      return render :json => congressmen.to_json
     else
       @congressmen = results.paginate(page: params[:page], per_page: 4)
 

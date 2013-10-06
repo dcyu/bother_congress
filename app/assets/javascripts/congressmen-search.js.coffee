@@ -19,9 +19,13 @@ refresh_congressmen_view = ->
     type: "GET"
     url: '/congressmen/search'
     data: $("#qform").serialize()
-    success: (data) ->
-      new_content = $("<div></div>").addClass("congressmen").append((template(json) for json in data).join(" "))
-      $(".congressmen").replaceWith(new_content)
+    success: (data, status) ->
+      console.log(data)
+      if data.status == 'nochange'
+        return
+      else
+        new_content = $("<div></div>").addClass("congressmen").append((template(json) for json in data).join(" "))
+        $(".congressmen").replaceWith(new_content)
 
 
 $ ->
