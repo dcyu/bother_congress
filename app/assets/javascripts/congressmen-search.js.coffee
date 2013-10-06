@@ -47,6 +47,22 @@ remove_recipient = (e) ->
       $("#congressman-#{$(this).data('id')} a").removeClass('selected').addClass('unselected').find('h4').html("Select")
       $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{congressman.id}'>&times;</div></span>" for congressman in data).join(""))
 
+show_search_filters = (e) ->
+  $("#search-filters").show()
+
+  $("#state-select, #legislator-type-select, #political-party-select").chosen(
+    disable_search_threshold: 5
+    allow_single_deselect: true
+  )
+
+  $("#show-search-filters-link").hide()
+  $("#hide-search-filters-link").show()
+
+hide_search_filters = (e) ->
+  $("#search-filters").hide()
+  $("#show-search-filters-link").show()
+  $("#hide-search-filters-link").hide()
+
 $ ->
   timer = null
   $('input#q').keyup ->
@@ -58,3 +74,5 @@ $ ->
   $("body").delegate ".overlay.unselected", "click", add_recipient
   $("body").delegate ".overlay.selected", "click", remove_recipient
   $("body").delegate ".close-link", "click", remove_recipient
+  $("body").delegate "#show-search-filters-link", "click", show_search_filters
+  $("body").delegate "#hide-search-filters-link", "click", hide_search_filters

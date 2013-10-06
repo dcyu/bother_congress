@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= handlebars
+//= chosen-jquery-min
 //= require_tree .
 
 var page_state;

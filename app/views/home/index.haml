@@ -40,7 +40,27 @@
     .filter.is-ta-center
       %form{id: "qform", onsubmit: "return false;"}
         %input.search.t-arvo{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q"}/
-
+        #search-filters{style:"display:none;"}
+          Filters: &nbsp;
+          %select#state-select{name:'state', :style=>"width:180px;", :"data-placeholder" => "State"}
+            %option
+            = options_for_select(country_select_options)
+          %select#legislator-type-select{name:'type', :style=>"width:180px;", :"data-placeholder" => "Legislator Type"}
+            %option
+            %option{value: 'Sen'}
+              Senator
+            %option{value: 'Rep'}
+              Representative
+          %select#political-party-select{name:'party', :style=>"width:180px;", :"data-placeholder" => "Political Party"}
+            %option
+            %option{value: 'D'}
+              Democrat
+            %option{value: 'R'}
+              Republican
+        %a#show-search-filters-link{href:"#", style: "font-size: 12px; display:inline-block; height:23px;"}
+          + Show filters
+        %a#hide-search-filters-link{href:"#", style: "margin-top: -20px; display:none; font-size: 12px; float: right; padding-right: 15px;"}
+          \- Hide filters
     .congressmen
       - @congressmen.each do |c|
         .congressman{:id => "congressman-#{c.id}"}
@@ -59,8 +79,6 @@
                 &#10003;
               - else
                 Select
-    = will_paginate @congressmen, :class => 'apple_pagination'
-
 
   .l-container.third.is-ta-center
     %p.t-arvo.clearfix
