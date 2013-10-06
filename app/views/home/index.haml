@@ -38,7 +38,7 @@
           .close-link{:"data-id" => c.id}
             &times;
     .filter.is-ta-center
-      %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
+      %form{id: "qform", onsubmit: "return false;"}
         %input.search.t-arvo{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q"}/
 
     .congressmen
