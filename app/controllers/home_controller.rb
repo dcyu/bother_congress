@@ -39,7 +39,11 @@ class HomeController < ApplicationController
         if true
           send_phone(message, user, congressmen)
         end
+        congressmen.each do |cm|
+          Message.create_from_message_user_congressman(message, user, cm)
+        end
       else
+        # should not reach here
       end
 
       render "send_message_success.html"
