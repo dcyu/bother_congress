@@ -90,7 +90,7 @@ module SendMessageHelper
 
   def send_email(message, user, congressmen)
     congressmen.each do |cm|
-      if !cm.email.blank?
+      if !cm.email.nil? and !cm.email.blank?
         CongressMailer.send_message(message, user, cm).deliver!
       end
     end
