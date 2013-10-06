@@ -1,7 +1,8 @@
-%h1.title.is-ta-center.t-arvo Select Legislator(s)
+%h1.title.is-ta-center.t-arvo Find your Congressmen
 
 .filter.is-ta-center
-  %input{:type => "text", placeholder: "Search by name", id: "q", :"class"=>"message t-arvo"}/
+  %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
+    %input{:type => "text", placeholder: "Search by name", id: "q", name: "q", :"class"=>"message t-arvo"}/
 
 .congressmen
 
@@ -19,16 +20,10 @@
       %a.overlay{:href => "#"}
         %h4.t-arvo.t-white Select
 
-  = will_paginate @congressmen, :class => 'apple_pagination'
+= will_paginate @congressmen, :class => 'apple_pagination'
 
 :javascript
   $(".overlay").on("click", function(e) {
     e.preventDefault;
 
-  });
-
-  $('input#q').typeahead({
-    name: 'accounts',
-    prefetch: '../congressmen/names',
-    limit: 5
   });

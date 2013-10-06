@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require typeahead-min
+//= require handlebars
 //= require_tree .
 
 $(document).ready(function() {

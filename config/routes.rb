@@ -3,6 +3,7 @@ BotherCongress::Application.routes.draw do
 
   get "/congressmen", :to => "congressmen#index", :as => :congressmen
   get "congressmen/names"
+  get "congressmen/search"
 
   get "sessions/create"
 

@@ -41,4 +41,5 @@ class Congressman < ActiveRecord::Base
   def fullname
     firstname + " " + lastname
   end
+
 end
