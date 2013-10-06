@@ -39,7 +39,7 @@ $(document).ready(function() {
     cls = ['.first','.second','.third'][page_state.page];
     $(".l-container").show();
     var height = $(".l-container"+cls).height();
-    $(".l-wrapper").css("height", height + 10);
+    $(".l-wrapper").css("height", height + 100);
     refresh_buttons();
   }
 
@@ -81,7 +81,7 @@ $(document).ready(function() {
     $(".l-container").show();
     $(this).closest(".l-window").animate({right: "+=150%"});
     var height = $(this).closest(".l-container").next().height();
-    $(".l-wrapper").css("height", height + 10);
+    $(".l-wrapper").css("height", height + 100);
     page_state.page += 1;
     save_state();
   });
@@ -90,7 +90,7 @@ $(document).ready(function() {
     e.preventDefault();
     $(this).closest(".l-window").animate({right: "+=-150%"});
     var height = $(this).closest(".l-container").prev().height();
-    $(".l-wrapper").css("height", height + 10);
+    $(".l-wrapper").css("height", height + 100);
     page_state.page -= 1;
     save_state();
   });
@@ -118,6 +118,10 @@ $(document).ready(function() {
       save_state();
       refresh_buttons();
     }
+  });
+
+  $(".dismiss").on("click", function() {
+    $(this).closest("#error_message").hide();
   });
 
   $("#email_button").on("click", function(e){

@@ -64,6 +64,8 @@
 
     %p#error_message.is-hidden 
       Error: Cannot select more than three legislators for one message.
+      %a.dismiss.is-right{:href => "#"}
+        X 
 
     .congressmen
       - @congressmen.each do |c|
