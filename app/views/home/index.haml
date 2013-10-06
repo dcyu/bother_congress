@@ -31,7 +31,8 @@
       Select Legislator(s)
 
     .filter.is-ta-center
-      %input{:type => "text", placeholder: "Search by name", id: "q", :"class"=>"search t-arvo"}/
+      %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
+        %input{:type => "text", placeholder: "Search by name", id: "q", name: "q", :"class"=>"search t-arvo"}/
 
     .congressmen
 
@@ -49,7 +50,8 @@
           %a.overlay{:href => "#"}
             %h4.t-arvo.t-white Select
 
-      = will_paginate @congressmen, :class => 'apple_pagination'
+    = will_paginate @congressmen, :class => 'apple_pagination'
+
 
   .l-container.third
     %h1.t-arvo 

@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
+//= handlebars
 //= require_tree .
 
 $(document).ready(function() {
-  
+
   $(".message").focus();
 
   $(".old-message").on("click", function() {
@@ -38,8 +38,5 @@ $(document).ready(function() {
     var height = $(this).closest(".l-container").prev().height();
     $(".l-wrapper").css("height", height + 10);
   });
-
-  var height = $(".l-container:nth-child(1)").height();
-  $(".l-wrapper").css("height", height + 10);
 
 });
