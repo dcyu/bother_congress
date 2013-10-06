@@ -20,7 +20,6 @@ refresh_congressmen_view = ->
     url: '/congressmen/search'
     data: $("#qform").serialize()
     success: (data, status) ->
-      console.log(data)
       if data.status == 'nochange'
         return
       else
