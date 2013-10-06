@@ -89,6 +89,9 @@ module SendMessageHelper
   end
 
   def send_email(message, user, congressmen)
+    congressmen.each do |cm|
+      CongressMailer.send_message(message, user, cm).deliver!
+    end
   end
 
 end
