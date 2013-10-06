@@ -29,6 +29,7 @@ module SendMessageHelper
   end
 
   def send_twitter(user, congressmen)
+    auth = Authorization.find_by_provider_and_user_id('twitter', user.id)
   end
 
   def send_phone(user, congressmen)
@@ -36,4 +37,5 @@ module SendMessageHelper
 
   def send_email(user, congressmen)
   end
+
 end

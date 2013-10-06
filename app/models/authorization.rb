@@ -11,7 +11,7 @@
 #
 
 class Authorization < ActiveRecord::Base
-  attr_accessible :provider, :uid, :user_id, :user
+  attr_accessible :provider, :uid, :user_id, :user, :token, :secret
   belongs_to :user
   validates :provider, :uid, :presence => true
 
@@ -20,7 +20,13 @@ class Authorization < ActiveRecord::Base
       name = auth_hash['info']['name']
       email = auth_hash['info']['email']
       user = User.create :name => name, :email => email
-      auth = create :user_id => user.id, :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      auth = create(
+        :user_id => user.id,
+        :provider => auth_hash["provider"],
+        :uid => auth_hash["uid"],
+        :token => auth_hash['credentials']['token'],
+        :secret => auth_hash['credentials']['secret']
+      )
     end
 
     auth

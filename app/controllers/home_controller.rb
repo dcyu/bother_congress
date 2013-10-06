@@ -16,6 +16,9 @@ class HomeController < ApplicationController
         if user.has_facebook
           send_facebook(message, user, cm)
         end
+        if user.has_twitter
+          send_twitter(message, user, cm)
+        end
       else
       end
 
