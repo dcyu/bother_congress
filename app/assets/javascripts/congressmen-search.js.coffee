@@ -1,6 +1,6 @@
 refresh_congressmen_view = ->
   template = Handlebars.compile("""
-    <div class="congressman">
+    <div id="congressman-{{id}}" class="congressman">
       <img src="{{picture_url}}"></img>
       <strong>
         {{title}}. {{firstname}} {{lastname}}
