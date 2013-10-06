@@ -16,11 +16,11 @@ $ ->
   """)
 
   $('input#q').keyup ->
-    if $("input#q").val().length > 2
+    if $("input#q").val().length > 1
       $.ajax
         type: "GET"
         url: '/congressmen/search'
         data: $("#qform").serialize()
         success: (data) ->
-          console.log(data)
-          $(".congressmen").html((template(json) for json in data).join(" "))
+          new_content = $("<div></div>").addClass("congressmen").append((template(json) for json in data).join(" "))
+          $(".congressmen").replaceWith(new_content)
