@@ -18,6 +18,13 @@ module SendMessageHelper
     }
     url = "https://graph.facebook.com/#{auth.uid}/feed"
     response = HTTParty.post(url, { :body => data })
+
+    # detect if failure. if so, remove facebook Authorization
+    # so that the user has to re-authorize in the future
+    j = JSON.parse(response.body)
+    if !j.has_key?('id')
+      auth.delete()
+    end
   end
 
   def send_twitter(user, congressman)
