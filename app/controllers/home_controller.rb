@@ -36,6 +36,9 @@ class HomeController < ApplicationController
         if user.has_twitter
           send_twitter(message, user, congressmen)
         end
+        if true
+          send_phone(message, user, congressmen)
+        end
       else
       end
 
@@ -70,6 +73,14 @@ class HomeController < ApplicationController
         set_last_message(request.POST['message'])
       end
     end
+  end
+
+
+  def phone_endpoint
+     @message = request.GET['message']
+     render "phone_endpoint.xml.erb",
+       :content_type => "application/xml",
+       :layout => false
   end
 
 end

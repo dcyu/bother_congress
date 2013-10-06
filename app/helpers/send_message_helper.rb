@@ -66,6 +66,26 @@ module SendMessageHelper
   end
 
   def send_phone(message, user, congressmen)
+    congressmen.each do |cm|
+      if (!cm.phone.nil?) and (!cm.phone.empty?)
+        personal_message = "Hello " + cm.firstname + " " + cm.lastname + "."
+        personal_message += user.name + " has a message for you. " + message
+        url = url_for(:controller => 'home', :action => 'phone_endpoint', :only_path => false)
+        url += "?message=" + Rack::Utils.escape(personal_message)
+        data = {
+          'Url' => url,
+          'Method' => 'GET',
+          'From' => ENV['TWILIO_PHONE_NUMBER'],
+          'To' => cm.phone,
+        }
+        auth = {
+          :username => ENV['TWILIO_ACCOUNT_SID'],
+          :password => ENV['TWILIO_ACCOUNT_SECRET'],
+        }
+        url = "https://api.twilio.com/2010-04-01/Accounts/#{ENV['TWILIO_ACCOUNT_SID']}/Calls"
+        response = HTTParty.post(url, :body => data, :basic_auth => auth)
+      end
+    end
   end
 
   def send_email(message, user, congressmen)
