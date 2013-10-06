@@ -55,3 +55,5 @@ gem 'omniauth-twitter'
 
 gem 'httparty'
 gem 'json'
+
+gem 'oauth'

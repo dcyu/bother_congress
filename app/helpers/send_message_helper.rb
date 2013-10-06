@@ -28,12 +28,47 @@ module SendMessageHelper
     end
   end
 
-  def send_twitter(user, congressmen)
+  def get_twitter_access_token(auth)
+    consumer = OAuth::Consumer.new(
+      ENV['TWITTER_APP_ID'], ENV['TWITTER_APP_SECRET'],
+      :site => "http://api.twitter.com"
+    )
+    token_hash = {
+      :oauth_token => auth.token,
+      :oauth_token_secret => auth.secret 
+    }
+    access_token = OAuth::AccessToken.from_hash(consumer, token_hash)
+    return access_token
   end
 
-  def send_phone(user, congressmen)
+  def send_twitter(message, user, congressmen)
+    auth = Authorization.find_by_provider_and_user_id('twitter', user.id)
+    access_token = get_twitter_access_token(auth)
+    url = "https://api.twitter.com/1.1/statuses/update.json"
+    errors = successes = 0
+    congressmen.map(&:twitter_id).compact.each do |twitter_id|
+      data = {
+        :status => message + " @" + "pashamur"#twitter_id
+      }
+      response = access_token.post(url, data)
+      if response.code != 200
+        errors += 1
+      else
+        successes += 1
+      end
+    end
+
+    # if there were no successes and some errors,
+    # there's probably an issue with the auth token, so delete it
+    if errors > 0 && successes == 0
+      auth.delete()
+    end
   end
 
-  def send_email(user, congressmen)
+  def send_phone(message, user, congressmen)
   end
+
+  def send_email(message, user, congressmen)
+  end
+
 end

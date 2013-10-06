@@ -177,6 +177,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   json
+  oauth
   omniauth
   omniauth-facebook
   omniauth-twitter
