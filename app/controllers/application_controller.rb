@@ -42,5 +42,9 @@ class ApplicationController < ActionController::Base
     session[:state] = state
   end
 
+  def clear_page_state
+    session[:state] = {}
+    session[:congressmen] = []
+  end
 
 end

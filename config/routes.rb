@@ -20,6 +20,7 @@ BotherCongress::Application.routes.draw do
   match 'about' => 'home#about'
 
   match 'send_message' => 'home#send_message'
+  match 'send_message_success' => 'home#send_message_success'
   match 'save_state' => 'home#save_state'
   match 'phone_endpoint' => 'home#phone_endpoint'
 

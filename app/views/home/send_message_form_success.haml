@@ -1,0 +1,13 @@
+.l-window
+  .congressmen
+    - @congressmen.each do |c|
+      .congressman{:id => "congressman-#{c.id}"}
+        = image_tag c.picture_url
+        %strong
+          = c.title + "."
+          = c.firstname
+          = c.lastname
+        %label
+          %b
+            = c.party
+            \- #{c.state}

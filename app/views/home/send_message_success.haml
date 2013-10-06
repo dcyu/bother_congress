@@ -1,0 +1,22 @@
+.l-window
+  .congressmen
+    - @congressmen.each do |c|
+      .congressman{:id => "congressman-#{c.id}"}
+        = image_tag c.picture_url
+        %strong
+          = c.title + "."
+          = c.firstname
+          = c.lastname
+        %label
+          %b
+            = c.party
+            \- #{c.state}
+
+    %h1.t-arvo
+      Thy Congress hath been bothered!
+
+    %div.t-arvo.clearfix.is-right.is_block.try-again
+      That was fun...
+      %span{style: "width: 40px; display: inline-block;"}
+      %a{:href => url_for(:controller => :home, :action => :index)}
+        Try again?

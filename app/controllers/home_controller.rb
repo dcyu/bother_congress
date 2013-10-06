@@ -25,55 +25,42 @@ class HomeController < ApplicationController
 
   def send_message
     user = get_user
-
-    if request.method == "POST"
-      message = request.POST['message']
-
-      if user
-        congressmen = []
-        if user.has_facebook
-          send_facebook(message, user, congressmen)
-        end
-        if user.has_twitter
-          send_twitter(message, user, congressmen)
-        end
-        if true
-          send_phone(message, user, congressmen)
-        end
-        if user.has_email
-          send_email(message, user, congressmen)
-        end
-        congressmen.each do |cm|
-          Message.create_from_message_user_congressman(message, user, cm)
-        end
-      else
-        # should not reach here
+    state = get_page_state
+    if user
+      @congressmen = session[:congressmen].map{|x| Congressman.find(x)}
+      message = session[:message]
+      puts @congressmen
+      if user.has_facebook and state['facebook_enabled'] == true
+        puts "sending facebook"
+        #send_facebook(message, user, @congressmen)
       end
-
-      render "send_message_success.html"
+      if user.has_twitter and state['twitter_enabled'] == true
+        puts "sending twitter"
+        #send_twitter(message, user, @congressmen)
+      end
+      if state['phone_enabled'] == true
+        puts "sending phone"
+        #send_phone(message, user, @congressmen)
+      end
+      if user.has_email and state['email_enabled'] == true
+        puts "sending email"
+        #send_email(message, user, @congressmen)
+      end
+      @congressmen.each do |cm|
+        Message.create_from_message_user_congressman(message, user, cm)
+      end
+      session[:old_congressmen] = session[:congressmen]
+      clear_page_state()
+      redirect_to url_for(:controller => :home, :action => :send_message_success)
     else
-      @disabled = {
-        :facebook => true,
-        :twitter => true,
-        :phone => true,
-        :email => true,
-      }
-      @is_connected = false
-
-      if user
-        @disabled[:phone] = false
-        @disabled[:facebook] = ! user.has_facebook
-        @disabled[:twitter] = ! user.has_twitter
-        @disabled[:email] = ! user.has_email
-        @is_connected = true
-      end
-
-      @message = get_last_message
-
-      render "send_message_form.html"
+      redirect_to url_for(:controller => :home, :action => :index)
     end
   end
 
+  def send_message_success
+    @congressmen = session[:old_congressmen].map{|x| Congressman.find(x)}
+    render "send_message_success"
+  end
 
   def save_state
     state = JSON.parse(request.body.read)
@@ -83,10 +70,10 @@ class HomeController < ApplicationController
 
 
   def phone_endpoint
-     @message = request.GET['message']
-     render "phone_endpoint.xml.erb",
-       :content_type => "application/xml",
-       :layout => false
+    @message = request.GET['message']
+    render "phone_endpoint.xml.erb",
+      :content_type => "application/xml",
+      :layout => false
   end
 
   def about

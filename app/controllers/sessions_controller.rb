@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       state['twitter_enabled'] = true
     end
     user = User.find(session[:user_id])
-    if user.email and !state['email'].empty?
+    if user.email and !state['email'].nil? and !state['email'].empty?
       state['email'] = user.email
     end
     save_page_state(state)

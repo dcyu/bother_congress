@@ -120,15 +120,7 @@ $(document).ready(function() {
   });
 
   $("#email_button").on("click", function(e){
-    if (page_state.email_enabled === false){
-      if (page_state.email_address === null || page_state.email_address === ''){
-        // TODO: fixme
-        page_state.email_address = prompt("Please enter your email address.");
-      }
-      page_state.email_enabled = true;
-    } else {
-      page_state.email_enabled = false;
-    }
+    page_state.email_enabled = !page_state.email_enabled;
     save_state();
     refresh_buttons();
   });
@@ -142,4 +134,15 @@ $(document).ready(function() {
   $(".overlay").on("click", function(e) {
     e.preventDefault();
   });
+
+  $("#bother_button").on("click", function(e){
+    if (page_state.facebook_enabled === false && page_state.twitter_enabled === false){
+      alert("You must authenticate via Facebook or Twitter.");
+    } else {
+      save_state(function(){
+        window.location.href = '/send_message';
+      });
+    }
+  });
+
 });
