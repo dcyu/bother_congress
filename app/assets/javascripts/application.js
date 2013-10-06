@@ -70,7 +70,7 @@ $(document).ready(function() {
 
   $(".message").on("keyup", function() {
     page_state.message = $(this).val();
-    $(".message").val(page_state.message);
+    $(".message").not(this).val(page_state.message);
     $(".message-draft").show().html(page_state.message);
   });
 
