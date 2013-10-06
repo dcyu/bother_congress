@@ -27,6 +27,8 @@
       %a.is-right.is-block.next-link{:href => "#"} 
         Next →
 
+    %p.message-draft.t-arvo.is-ta-center
+
     %h1.t-arvo 
       Select Legislator(s)
 
@@ -53,10 +55,34 @@
     = will_paginate @congressmen, :class => 'apple_pagination'
 
 
-  .l-container.third
-    %h1.t-arvo 
-      Blast 'em
-    
+  .l-container.third.is-ta-center
     %p.t-arvo.clearfix
       %a.is-left.is-block.previous-link{:href => "#"} 
         ← Previous 
+
+    %h2.t-arvo.is-inline-block.is-left
+      Send it through:
+    
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+      FACEBOOK
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+      TWITTER
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+      PHONE
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+      EMAIL
+
+
+    %h2.t-arvo.is-ta-left
+      Confirm message:
+
+    %input.message.t-arvo.short{:type => "text", placeholder: "Write something here!"}/  
+  
+    %h2.is-ta-center 
+      %a.t-arvo.is-inline-block.button.send.on-hover.is-enlarged.is-ta-center{:href => "#"} 
+        BOTHER
+    
+:javascript
+  $(".sm").on("click", function() {
+    $(this).toggleClass("highlighted");
+  });

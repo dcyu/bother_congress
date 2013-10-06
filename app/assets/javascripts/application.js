@@ -22,6 +22,13 @@ $(document).ready(function() {
   $(".old-message").on("click", function() {
     var message = $(this).html();
     $(".message").val(message);
+    $(".message-draft").html(message);
+  });
+
+  $(".message").on("keyup", function() {
+    var message = $(this).val();
+    $(".message").val(message);
+    $(".message-draft").html(message);
   });
 
   $(".next-link").on("click", function(e) {

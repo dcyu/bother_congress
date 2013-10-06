@@ -1,3 +1,21 @@
+// button
+.button
+  background-color: #ddd
+  color: #fff
+  padding: 1em 0
+  &.sm
+    font-size: 2em
+    padding: 1em
+    &:hover
+      background-color: $blue
+    &.highlighted
+      background-color: $blue
+  &.send
+    background-color: $blue
+    width: 92%
+  &:hover
+    color: #fff
+
 // main
 
 .congressmen
@@ -30,6 +48,9 @@
   width: 90%
   margin-top: 0
   border: 1px solid #000
+
+.message-draft
+  font-size: 1.5em
 
 .next-link, .previous-link
   font-size: 2em
