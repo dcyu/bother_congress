@@ -26,6 +26,23 @@ refresh_congressmen_view = ->
         new_content = $("<div></div>").addClass("congressmen").append((template(json) for json in data).join(" "))
         $(".congressmen").replaceWith(new_content)
 
+add_recipient = (e) ->
+  $.ajax
+    type: "POST",
+    url: '/congressmen/add_recipient',
+    data: {id: $(this).data('id')},
+    success: (data) =>
+      $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
+      $("#selected").html(("<span>#{congressman.fullname}</span>" for congressman in data).join(""))
+
+remove_recipient = (e) ->
+  $.ajax
+    type: "POST",
+    url: '/congressmen/remove_recipient',
+    data: {id: $(this).data('id')},
+    success: (data) =>
+      $(this).removeClass('selected').addClass('unselected').find('h4').html("Select")
+      $("#selected").html(("<span>#{congressman.fullname}</span>" for congressman in data).join(""))
 
 $ ->
   timer = null
@@ -35,18 +52,5 @@ $ ->
 
     timer = setTimeout(refresh_congressmen_view, 250)
 
-  $("body").delegate ".overlay.unselected", "click", (e) ->
-    $.ajax
-      type: "POST",
-      url: '/congressmen/add_recipient',
-      data: {id: $(this).data('id')},
-      success: (data) =>
-        $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
-
-  $("body").delegate ".overlay.selected", "click", (e) ->
-    $.ajax
-      type: "POST",
-      url: '/congressmen/remove_recipient',
-      data: {id: $(this).data('id')},
-      success: (data) =>
-        $(this).removeClass('selected').addClass('unselected').find('h4').html("Select")
+  $("body").delegate ".overlay.unselected", "click", add_recipient
+  $("body").delegate ".overlay.selected", "click", remove_recipient

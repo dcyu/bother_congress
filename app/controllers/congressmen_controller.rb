@@ -45,6 +45,6 @@ class CongressmenController < ApplicationController
 
   def remove_recipient
     session[:congressmen].try(:delete, params[:id].to_i)
-    render :json => session[:congressmen], :status => 200
+    render :json => Congressman.find_all_by_id(session[:congressmen]).to_json(:only => :id, :methods => [:fullname, :picture_url])
   end
 end

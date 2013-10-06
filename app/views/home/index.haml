@@ -29,12 +29,13 @@
 
     %p.message-draft.t-arvo.is-ta-center.is-hidden
 
-    %h1.t-arvo
+    %h1.t-arvo{:style=>"display:inline-block;"}
       Select Legislator(s)
+    %p#selected{:style =>"margin-left:50px; display:inline-block"}
 
     .filter.is-ta-center
       %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
-        %input{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q", :"class"=>"search t-arvo"}/
+        %input.search.t-arvo{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q"}/
 
     .congressmen
 
@@ -62,14 +63,14 @@
 
     %h2.t-arvo.is-inline-block.is-left
       Send it through:
-    
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       FACEBOOK
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       TWITTER
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       PHONE
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
 
     %h2.t-arvo.is-ta-left
       Confirm message:
