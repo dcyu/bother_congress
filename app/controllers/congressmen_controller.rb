@@ -7,8 +7,19 @@ class CongressmenController < ApplicationController
     results = Congressman.where("in_office = 1 AND firstname || ' ' || lastname ~* ?", "[[:<:]]"+params[:q].strip)
 
     if request.xhr?
-      return render :json => results[0..3].to_json(
-        :only => [:id, :title, :firstname, :lastname, :party, :state], :methods => [:picture_url])
+      congressmen = results[0..3].map do |c|
+        {
+          id: c.id,
+          title: c.title,
+          firstname: c.firstname,
+          lastname: c.lastname,
+          party: c.party,
+          state: c.state,
+          picture_url: c.picture_url,
+          selected: !!session[:congressmen].try(:include?, c.id)
+        }
+      end
+      render :json => congressmen.to_json
     else
       @congressmen = results.paginate(page: params[:page], per_page: 4)
 
@@ -16,15 +27,11 @@ class CongressmenController < ApplicationController
     end
   end
 
-  def names
-    render :json => Congressman.where(in_office: 1).select([:firstname, :lastname]).all.map(&:fullname)
-  end
-
   def add_recipient
     session[:congressmen] = [] unless session[:congressmen]
 
     if session[:congressmen].size < 3
-      session[:congressmen] << params[:id]
+      session[:congressmen] << params[:id].to_i
       session[:congressmen].uniq!
     end
 

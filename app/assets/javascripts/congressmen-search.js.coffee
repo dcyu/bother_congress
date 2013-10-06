@@ -9,8 +9,8 @@ refresh_congressmen_view = ->
         <b>
           {{party}} - {{state}}
         </b>
-      <a class="overlay" href="#" data-id="{{id}}">
-        <h4 class="t-arvo t-white">Contact</h4>
+      <a class="overlay {{#if selected}}selected{{else}}unselected{{/if}}" href="#" data-id="{{id}}">
+        <h4 class="t-arvo t-white">{{#if selected}}&#10003;{{else}}Contact{{/if}}</h4>
       </a>
     </div>
   """)
@@ -39,7 +39,6 @@ $ ->
       data: {id: $(this).data('id')},
       success: (data) =>
         $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
-        $(this).find('h4').attr('style', 'font-size:100px;')
 
   $("body").delegate ".overlay.selected", "click", (e) ->
     $.ajax
@@ -48,4 +47,3 @@ $ ->
       data: {id: $(this).data('id')},
       success: (data) =>
         $(this).removeClass('selected').addClass('unselected').find('h4').html("Select")
-        $(this).find('h4').attr('style', 'font-size:50px;')
