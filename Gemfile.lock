@@ -176,6 +176,7 @@ DEPENDENCIES
   haml-rails
   httparty
   jquery-rails
+  json
   omniauth
   omniauth-facebook
   omniauth-twitter

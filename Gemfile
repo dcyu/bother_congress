@@ -54,3 +54,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'httparty'
+gem 'json'

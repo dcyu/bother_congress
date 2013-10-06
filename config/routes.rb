@@ -2,6 +2,7 @@ BotherCongress::Application.routes.draw do
   get "sessions/new"
 
   get "/congressmen", :to => "congressmen#index", :as => :congressmen
+  get "congressmen/names"
 
   get "sessions/create"
 
