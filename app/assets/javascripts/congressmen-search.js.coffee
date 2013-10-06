@@ -27,13 +27,16 @@ refresh_congressmen_view = ->
         $(".congressmen").replaceWith(new_content)
 
 add_recipient = (e) ->
-  $.ajax
-    type: "POST",
-    url: '/congressmen/add_recipient',
-    data: {id: $(this).data('id')},
-    success: (data) =>
-      $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
-      $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{$(this).data('id')}'>&times;</div></span>" for congressman in data).join(""))
+  if $("#selected").children().size() < 3
+    $.ajax
+      type: "POST",
+      url: '/congressmen/add_recipient',
+      data: {id: $(this).data('id')},
+      success: (data) =>
+        $(this).removeClass('unselected').addClass('selected').find('h4').html("&#10003;")
+        $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{congressman.id}'>&times;</div></span>" for congressman in data).join(""))
+  else
+    $("#error_message").show()
 
 remove_recipient = (e) ->
   $.ajax
@@ -42,7 +45,7 @@ remove_recipient = (e) ->
     data: {id: $(this).data('id')},
     success: (data) =>
       $("#congressman-#{$(this).data('id')} a").removeClass('selected').addClass('unselected').find('h4').html("Select")
-      $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{$(this).data('id')}'>&times;</div></span>" for congressman in data).join(""))
+      $("#selected").html(("<span class='selected-name'>#{congressman.fullname}<div class='close-link' data-id='#{congressman.id}'>&times;</div></span>" for congressman in data).join(""))
 
 $ ->
   timer = null
