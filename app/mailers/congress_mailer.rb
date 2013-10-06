@@ -1,11 +1,13 @@
 class CongressMailer < ActionMailer::Base
-  def test_email
+  def send_message(m, user, congressman)
+    @congressman = congressman
+    @message = m 
+    @user = user
     mail(
-      :to => ["pashamur@gmail.com", "hogbait@gmail.com"],
-      :from => "bothercongress+testing@gmail.com",
-      :return_path => "pashamur@gmail.com",
-      :subject => "Testing email delivery",
-      :body => "This is a test email, please ignore"
+      :to => congressman.email,
+      :from => user.email,
+      :return_path => user.email,
+      :subject => "#{user.name} has a message for you.",
     )
   end
 end
