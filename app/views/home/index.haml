@@ -29,7 +29,7 @@
 
     %p.message-draft.t-arvo.is-ta-center.is-hidden
 
-    %h1.t-arvo 
+    %h1.t-arvo
       Select Legislator(s)
 
     .filter.is-ta-center
@@ -49,7 +49,7 @@
             %b
               = c.party
               \- #{c.state}
-          %a.overlay{:href => "#"}
+          %a.overlay{:href => "#", :"data-id" => c.id}
             %h4.t-arvo.t-white Select
 
     = will_paginate @congressmen, :class => 'apple_pagination'
@@ -57,31 +57,31 @@
 
   .l-container.third.is-ta-center
     %p.t-arvo.clearfix
-      %a.is-left.is-block.previous-link{:href => "#"} 
-        ← Previous 
+      %a.is-left.is-block.previous-link{:href => "#"}
+        ← Previous
 
     %h2.t-arvo.is-inline-block.is-left
       Send it through:
-    
-    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       FACEBOOK
-    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       TWITTER
-    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       PHONE
-    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"} 
+    %a.t-arvo.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
       EMAIL
 
 
     %h2.t-arvo.is-ta-left
       Confirm message:
 
-    %input.message.t-arvo.short{:type => "text", placeholder: "Write something here!"}/  
-  
-    %h2.is-ta-center 
-      %a.t-arvo.is-inline-block.button.send.on-hover.is-enlarged.is-ta-center{:href => "#"} 
+    %input.message.t-arvo.short{:type => "text", placeholder: "Write something here!"}/
+
+    %h2.is-ta-center
+      %a.t-arvo.is-inline-block.button.send.on-hover.is-enlarged.is-ta-center{:href => "#"}
         BOTHER
-    
+
 :javascript
   $(".sm").on("click", function() {
     $(this).toggleClass("highlighted");

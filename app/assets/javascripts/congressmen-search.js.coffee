@@ -9,7 +9,7 @@ refresh_congressmen_view = ->
         <b>
           {{party}} - {{state}}
         </b>
-      <a class="overlay" href="#">
+      <a class="overlay" href="#" data-id="{{id}}">
         <h4 class="t-arvo t-white">Contact</h4>
       </a>
     </div>
@@ -31,3 +31,12 @@ $ ->
       clearTimeout(timer)
 
     timer = setTimeout(refresh_congressmen_view, 250)
+
+  $(".overlay").on "click", (e) ->
+    $.ajax
+      type: "POST",
+      url: '/congressmen/add_recipient',
+      data: {id: $(this).data('id')},
+      success: (data) ->
+        console.log(data)
+

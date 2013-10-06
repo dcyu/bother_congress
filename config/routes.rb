@@ -4,6 +4,8 @@ BotherCongress::Application.routes.draw do
   get "/congressmen", :to => "congressmen#index", :as => :congressmen
   get "congressmen/names"
   get "congressmen/search"
+  post "congressmen/add_recipient"
+  post "congressmen/remove_recipient"
 
   get "sessions/create"
 
