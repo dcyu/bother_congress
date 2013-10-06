@@ -139,4 +139,7 @@ $(document).ready(function() {
     refresh_buttons();
   });
 
+  $(".overlay").on("click", function(e) {
+    e.preventDefault();
+  });
 });
