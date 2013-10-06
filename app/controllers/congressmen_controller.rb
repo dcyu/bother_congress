@@ -7,7 +7,8 @@ class CongressmenController < ApplicationController
     results = Congressman.where("in_office = 1 AND firstname || ' ' || lastname ~* ?", "[[:<:]]"+params[:q].strip)
 
     if request.xhr?
-      return render :json => results[0..3].to_json(:only => [:title, :firstname, :lastname, :party, :state], :methods => [:picture_url])
+      return render :json => results[0..3].to_json(
+        :only => [:title, :firstname, :lastname, :party, :state], :methods => [:picture_url])
     else
       @congressmen = results.paginate(page: params[:page], per_page: 4)
 

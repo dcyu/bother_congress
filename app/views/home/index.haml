@@ -1,14 +1,14 @@
 .l-window
   .l-container.first
-    %h1.t-arvo 
+    %h1.t-arvo
       Bother a Legislator (they deserve it):
 
-    %input.message.t-arvo{:type => "text", placeholder: "Write something here!"}/ 
+    %input.message.t-arvo{:type => "text", placeholder: "Write something here!"}/
 
     %p.t-arvo.clearfix
-      %a.is-right.is-block.next-link{:href => "#"} 
+      %a.is-right.is-block.next-link{:href => "#"}
         Next →
-         
+
     .old-messages
 
       %h2.t-arvo
@@ -22,17 +22,15 @@
 
   .l-container.second
     %p.t-arvo.clearfix
-      %a.is-left.is-block.previous-link{:href => "#"} 
-        ← Previous 
-      %a.is-right.is-block.next-link{:href => "#"} 
+      %a.is-left.is-block.previous-link{:href => "#"}
+        ← Previous
+      %a.is-right.is-block.next-link{:href => "#"}
         Next →
 
-    %h1.t-arvo 
-      Select Legislator(s)
-
+    %h1.t-arvo
     .filter.is-ta-center
       %form{:action => '/congressmen/search', :method => 'get', id: "qform"}
-        %input{:type => "text", placeholder: "Search by name", id: "q", name: "q", :"class"=>"search t-arvo"}/
+        %input{:type => "text", placeholder: "Search for a congressman by name", id: "q", name: "q", :"class"=>"search t-arvo"}/
 
     .congressmen
 
@@ -54,9 +52,9 @@
 
 
   .l-container.third
-    %h1.t-arvo 
+    %h1.t-arvo
       Blast 'em
-    
+
     %p.t-arvo.clearfix
-      %a.is-left.is-block.previous-link{:href => "#"} 
-        ← Previous 
+      %a.is-left.is-block.previous-link{:href => "#"}
+        ← Previous
