@@ -1,9 +1,23 @@
 class HomeController < ApplicationController
+
+  include SendMessageHelper
+
   def index
   end
 
   def send_message
+    user = get_user
+
     if request.method == "POST"
+      message = request.POST['message']
+
+      if user
+        if user.has_facebook
+          send_facebook(message, user, nil)
+        end
+      else
+      end
+
       render "send_message_success.html"
     else
       @disabled = {
@@ -14,7 +28,6 @@ class HomeController < ApplicationController
       }
       @is_connected = false
 
-      user = get_user
       if user
         @disabled[:phone] = false
         @disabled[:facebook] = ! user.has_facebook

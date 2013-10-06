@@ -1,4 +1,6 @@
 <form action="" method="POST">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+
   <h3>Some sort of title</h3>
   <textarea name="message" maxlength=140><% @message %></textarea>
   <% if not @is_connected %>
