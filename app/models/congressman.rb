@@ -23,7 +23,7 @@
 #
 
 class Congressman < ActiveRecord::Base
-  attr_accessible :title, :firstname, :middlename, :lastname, :name_suffix, :party, :state, :district, :in_office, :gender, :phone, :fax, :senate_class, :birthdate
+  attr_accessible :title, :firstname, :middlename, :lastname, :name_suffix, :party, :state, :district, :in_office, :gender, :phone, :fax, :senate_class, :birthdate, :email
 
   has_one :web_identity
   delegate :bioguide_id, :to => :web_identity

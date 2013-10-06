@@ -31,20 +31,16 @@ class HomeController < ApplicationController
       message = session[:message]
       puts @congressmen
       if user.has_facebook and state['facebook_enabled'] == true
-        puts "sending facebook"
-        #send_facebook(message, user, @congressmen)
+        send_facebook(message, user, @congressmen)
       end
       if user.has_twitter and state['twitter_enabled'] == true
-        puts "sending twitter"
-        #send_twitter(message, user, @congressmen)
+        send_twitter(message, user, @congressmen)
       end
       if state['phone_enabled'] == true
-        puts "sending phone"
-        #send_phone(message, user, @congressmen)
+        send_phone(message, user, @congressmen)
       end
       if user.has_email and state['email_enabled'] == true
-        puts "sending email"
-        #send_email(message, user, @congressmen)
+        send_email(message, user, @congressmen)
       end
       @congressmen.each do |cm|
         Message.create_from_message_user_congressman(message, user, cm)
