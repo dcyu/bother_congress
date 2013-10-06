@@ -49,7 +49,7 @@
             %b
               = c.party
               \- #{c.state}
-          %a.overlay{:href => "#", :"data-id" => c.id}
+          %a.overlay.unselected{:href => "#", :"data-id" => c.id}
             %h4.t-arvo.t-white Select
 
     = will_paginate @congressmen, :class => 'apple_pagination'

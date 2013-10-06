@@ -28,7 +28,7 @@ class CongressmenController < ApplicationController
       session[:congressmen].uniq!
     end
 
-    render :json => session[:congressmen], :status => 200
+    render :json => Congressman.find_all_by_id(session[:congressmen]).to_json(:only => :id, :methods => [:fullname, :picture_url])
   end
 
   def remove_recipient
