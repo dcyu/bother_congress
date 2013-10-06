@@ -1,22 +1,42 @@
-%h1.t-arvo 
-  Bother a Legislator (they deserve it):
+.l-window
+  .l-container.first
+    %h1.t-arvo 
+      Bother a Legislator (they deserve it):
 
-%input.message.t-arvo{:type => "text", placeholder: "Get your act together."}/ 
+    %input.message.t-arvo{:type => "text", placeholder: "Get your act together."}/ 
 
-%h2.t-arvo
-  = link_to "Next →", login_path, class: "is-ta-right is-block"
-     
-.old-messages
+    %h2.t-arvo.clearfix
+      %a.is-right.is-block.next-link{:href => "#"} 
+        Next →
+         
+    .old-messages
 
-  %h2.t-arvo
-    Or use someone else's message:
+      %h2.t-arvo
+        Or use someone else's message:
 
-  %p.old-message.on-hover.is-enlarged I can't believe how ridiculous you are.
+      %p.old-message.on-hover.is-enlarged I can't believe how ridiculous you are.
 
-  %p.old-message.on-hover.is-enlarged Really, you guys are absolute morons.
+      %p.old-message.on-hover.is-enlarged Really, you guys are absolute morons.
 
-  %p.old-message.on-hover.is-enlarged Buy me a sandwich.
-  
+      %p.old-message.on-hover.is-enlarged Buy me a sandwich.
+
+  .l-container.second
+    %h1.t-arvo 
+      Select Legislator(s)
+
+    %h2.t-arvo.clearfix
+      %a.is-left.is-block.previous-link{:href => "#"} 
+        ← Previous 
+      %a.is-right.is-block.next-link{:href => "#"} 
+        Next →
+
+  .l-container.third
+    %h1.t-arvo 
+      Blast 'em
+    
+    %h2.t-arvo.clearfix
+      %a.is-left.is-block.previous-link{:href => "#"} 
+        ← Previous 
 
 :javascript
   $(".message").focus();
@@ -26,3 +46,18 @@
     var message = $(this).html();
     $(".message").val(message);
   });
+
+:javascript
+  $(".next-link").on("click", function(e) {
+    e.preventDefault();
+    $(this).closest(".l-window").animate({right: "+=150%"});
+  });
+
+  $(".previous-link").on("click", function(e) {
+    e.preventDefault();
+    $(this).closest(".l-window").animate({right: "+=-150%"});
+  });
+
+:javascript
+  var height = $(".l-container").first().height();
+  $(".l-wrapper").css("height", height + 10);
