@@ -52,3 +52,5 @@ gem 'thin'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
+gem 'httparty'
