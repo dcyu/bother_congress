@@ -19,6 +19,7 @@
 #  birthdate    :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  has_picture  :boolean
 #
 
 require 'test_helper'

@@ -19,6 +19,7 @@
 #  birthdate    :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  has_picture  :boolean
 #
 
 class Congressman < ActiveRecord::Base
@@ -29,5 +30,9 @@ class Congressman < ActiveRecord::Base
 
   def picture_url
     "/assets/congressmen_photos/#{bioguide_id}.jpg"
+  end
+
+  def has_picture?
+    File.exist?("app/assets/images/congressmen_photos/#{bioguide_id}.jpg")
   end
 end
