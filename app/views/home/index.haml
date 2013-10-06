@@ -61,6 +61,10 @@
           + Show filters
         %a#hide-search-filters-link{href:"#", style: "margin-top: -20px; display:none; font-size: 12px; float: right; padding-right: 15px;"}
           \- Hide filters
+
+    %p#error_message.is-hidden 
+      Error: Cannot select more than three legislators for one message.
+
     .congressmen
       - @congressmen.each do |c|
         .congressman{:id => "congressman-#{c.id}"}
