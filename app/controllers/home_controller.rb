@@ -12,12 +12,12 @@ class HomeController < ApplicationController
       message = request.POST['message']
 
       if user
-        cm = []
+        congressmen = []
         if user.has_facebook
-          send_facebook(message, user, cm)
+          send_facebook(message, user, congressmen)
         end
         if user.has_twitter
-          send_twitter(message, user, cm)
+          send_twitter(message, user, congressmen)
         end
       else
       end
