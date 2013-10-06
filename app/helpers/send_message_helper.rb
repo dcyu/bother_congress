@@ -48,7 +48,7 @@ module SendMessageHelper
     errors = successes = 0
     congressmen.map(&:twitter_id).compact.each do |twitter_id|
       data = {
-        :status => message + " @" + "pashamur"#twitter_id
+        :status => message + " @" + twitter_id
       }
       response = access_token.post(url, data)
       if response.code != 200

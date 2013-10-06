@@ -28,8 +28,7 @@ class HomeController < ApplicationController
     state = get_page_state
     if user
       @congressmen = session[:congressmen].map{|x| Congressman.find(x)}
-      message = session[:message]
-      puts @congressmen
+      message = state['message']
       if user.has_facebook and state['facebook_enabled'] == true
         send_facebook(message, user, @congressmen)
       end
