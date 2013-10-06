@@ -5,7 +5,7 @@
 
     %input.message.t-arvo{:type => "text", placeholder: "Write something here!"}/ 
 
-    %h2.t-arvo.clearfix
+    %p.t-arvo.clearfix
       %a.is-right.is-block.next-link{:href => "#"} 
         Next →
          
@@ -21,7 +21,7 @@
       %p.old-message.on-hover.is-enlarged Buy me a sandwich.
 
   .l-container.second
-    %h2.t-arvo.clearfix
+    %p.t-arvo.clearfix
       %a.is-left.is-block.previous-link{:href => "#"} 
         ← Previous 
       %a.is-right.is-block.next-link{:href => "#"} 
@@ -31,7 +31,7 @@
       Select Legislator(s)
 
     .filter.is-ta-center
-      %input{:type => "text", placeholder: "Search by name", id: "q", :"class"=>"message t-arvo"}/
+      %input{:type => "text", placeholder: "Search by name", id: "q", :"class"=>"search t-arvo"}/
 
     .congressmen
 
@@ -55,6 +55,6 @@
     %h1.t-arvo 
       Blast 'em
     
-    %h2.t-arvo.clearfix
+    %p.t-arvo.clearfix
       %a.is-left.is-block.previous-link{:href => "#"} 
         ← Previous 
