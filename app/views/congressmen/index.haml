@@ -1,7 +1,7 @@
 %h1.title.is-ta-center.t-arvo Congressmen Search
 
 .filter.is-ta-center
-  %input{:type => "text", placeholder: "Name"}/
+  %input{:type => "text", placeholder: "Search by name", id: "q", :"class"=>"message t-arvo"}/
 
 .congressmen
 
@@ -25,4 +25,9 @@
   $(".overlay").on("click", function(e) {
     e.preventDefault;
 
+  });
+
+  $('input#q').typeahead({
+    name: 'accounts',
+    local: ['timtrueman', 'JakeHarding', 'vskarich']
   });
