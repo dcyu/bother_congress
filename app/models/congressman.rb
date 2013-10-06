@@ -36,4 +36,8 @@ class Congressman < ActiveRecord::Base
   def has_picture?
     File.exist?("app/assets/images/congressmen_photos/#{bioguide_id}.jpg")
   end
+
+  def fullname
+    firstname + " " + lastname
+  end
 end

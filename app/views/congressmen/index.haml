@@ -29,5 +29,6 @@
 
   $('input#q').typeahead({
     name: 'accounts',
-    local: ['timtrueman', 'JakeHarding', 'vskarich']
+    prefetch: '../congressmen/names',
+    limit: 5
   });
