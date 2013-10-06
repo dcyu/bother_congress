@@ -3,7 +3,7 @@
     %h1.t-arvo
       Bother a Legislator (they deserve it):
 
-    %input.message.t-arvo{:type => "text", placeholder: "Write something here!"}/
+    %input.message.t-arvo{:type => "text", placeholder: "Write something here!", maxlength: 120}/
 
     %p.t-arvo.clearfix
       %a.is-right.is-block.next-link{:href => "#"}
@@ -69,25 +69,24 @@
 
     %h2.t-arvo.is-inline-block.is-left
       Send it through:
-
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
+    
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "facebook_button"} 
       FACEBOOK
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "twitter_button"} 
       TWITTER
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "phone_button"} 
       PHONE
-    %a.button.sm.is-inline-block.on-hover.is-enlarged{:href => "#"}
+    %a.button.sm.is-inline-block.on-hover.is-enlarged{:id => "email_button"} 
+      EMAIL
 
     %h2.t-arvo.is-ta-left
       Confirm message:
 
-    %input.message.t-arvo.short{:type => "text", placeholder: "Write something here!"}/
+    %input.message.t-arvo.short{:type => "text", placeholder: "Write something here!", maxlength:120}/
 
     %h2.is-ta-center
       %a.t-arvo.is-inline-block.button.send.on-hover.is-enlarged.is-ta-center{:href => "#"}
         BOTHER
 
 :javascript
-  $(".sm").on("click", function() {
-    $(this).toggleClass("highlighted");
-  });
+  INIT_STATE = #{JSON::dump(@init_state)};

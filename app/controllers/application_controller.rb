@@ -9,15 +9,38 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_last_message
-    if session.include?(:last_message)
-      return session[:last_message]
+  def get_page_state
+    state = session[:state]
+    if state
+      # check for a corrupted state
+      good = true
+      required_keys = ['message','page','facebook_enabled','twitter_enabled',
+        'phone_enabled', 'email_enabled', 'email_address'];
+      required_keys.each do |key|
+        if !state.has_key?(key)
+          good = false
+        end
+      end
+      if good
+        return state
+      end
     end
-    return ""
+    default_state = {
+      'message' => "",
+      'page' => 0,
+      'facebook_enabled' => false,
+      'twitter_enabled' => false,
+      'phone_enabled' => false,
+      'email_enabled' => false,
+      'email_address' => "",
+    }
+    return default_state
   end
 
-  def set_last_message(m)
-    session[:last_message] = m
+  def save_page_state(state)
+    # TODO: validation?
+    session[:state] = state
   end
+
 
 end

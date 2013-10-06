@@ -20,8 +20,7 @@ BotherCongress::Application.routes.draw do
   match 'about' => 'home#about'
 
   match 'send_message' => 'home#send_message'
-  match 'save_message' => 'home#save_message'
-
+  match 'save_state' => 'home#save_state'
   match 'phone_endpoint' => 'home#phone_endpoint'
 
   # The priority is based upon order of creation:

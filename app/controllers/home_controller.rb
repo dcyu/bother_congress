@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @congressmen = Congressman.where(:in_office => 1, :has_picture => true).paginate(page: params[:page], per_page: 4)
+    @init_state = get_page_state
   end
 
   def search
@@ -74,12 +75,10 @@ class HomeController < ApplicationController
   end
 
 
-  def save_message
-    if request.method == "POST"
-      if request.POST.include?("message")
-        set_last_message(request.POST['message'])
-      end
-    end
+  def save_state
+    state = JSON.parse(request.body.read)
+    save_page_state(state)
+    render json: {"status" => "success"}
   end
 
 
