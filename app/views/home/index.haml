@@ -55,7 +55,7 @@
               \- #{c.state}
           %a{:class => "overlay #{if session[:congressmen].try(:include?, c.id) then 'selected' else 'unselected' end}", :href => "#", :"data-id" => c.id}
             %h4.t-arvo.t-white
-              - if session[:congressmen].include?(c.id)
+              - if session[:congressmen].try(:include?, c.id)
                 &#10003;
               - else
                 Select
