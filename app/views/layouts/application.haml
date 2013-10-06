@@ -9,21 +9,15 @@
   %body
     %header.l-header.clearfix
       %h1
-        %a{:href => "#{root_path}"}  
+        %a.logo{:href => "#{root_path}"}  
           %span.t-blue> bother 
           %span.t-red> congress
 
       %nav.l-nav 
         %ul 
           %li 
-            %a{:href => "#"} 
+            %a{:href => "#{about_path}"} 
               about
-          %li 
-            %a{:href => "#{login_path}"} 
-              sign up
-          %li 
-            %a{:href => "#{login_path}"} 
-              sign in
     .l-wrapper
     
       = yield

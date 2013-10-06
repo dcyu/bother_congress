@@ -87,4 +87,7 @@ class HomeController < ApplicationController
        :layout => false
   end
 
+  def about
+  end
+
 end

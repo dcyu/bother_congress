@@ -13,10 +13,18 @@
   &.send
     background-color: $blue
     width: 92%
+    font-size: 1.5em
   &:hover
     color: #fff
 
 // main
+
+.about
+  letter-spacing: -2px
+  font-weight: normal
+  &.video-about
+    width: 300px
+    padding-right: 50px
 
 .congressmen
   text-align: center
@@ -42,11 +50,17 @@
   span, select, input
     margin-right: 10px
 
+.logo
+  span
+    font-weight: bold
+
 .message, .search
+  font-family: $sans
   text-align: left
   font-size: 2.5em
   width: 90%
   margin-top: 0
+  padding-left: 20px
   border: 1px solid #000
 
 .message-draft
@@ -62,8 +76,9 @@
     cursor: pointer
 
 .old-message
-  font-family: "arvo"
   font-size: 2em
+  display: block
+  letter-spacing: -2px
   background-color: #ddd
   padding: 0.2em 1em
   margin: 0 0 1em 100px
